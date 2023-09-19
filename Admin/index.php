@@ -188,13 +188,18 @@ location.replace('../logout.php')
                                      if(isset($_POST[$aid])){
                                         $Id = $fetchquery['Id'];
                                         $insert=mysqli_query($conn,"UPDATE `research` SET `status`='accept' WHERE `Id`='$Id'");
-                                        if($insert){echo '<script>alert( "Data Inserted");</script>';}else{echo '<script>alert( "Data Not Inserted");</script>';}
+                                        if($insert){echo '<script>alert( "Data Inserted");</script>';
+                                            echo "<script>window.location.href='index.php'</script>";
+                                        }else{echo '<script>alert( "Data Not Inserted");</script>';}
                                     }else if(isset($_POST['reject'.$aid])){
                                         $Id = $fetchquery['Id'];
                                         $insert=mysqli_query($conn,"UPDATE `research` SET `status`='reject' WHERE `Id`='$Id'");
-                                        if($insert){echo '<script>alert( "Data Inserted");</script>';}else{echo '<script>alert( "Data Not Inserted");</script>';}
+                                        if($insert){echo '<script>alert( "Data Inserted");</script>';
+                                            echo "<script>window.location.href='index.php'</script>";
+                                        }else{echo '<script>alert( "Data Not Inserted");</script>';}
                                     }
                                     ?>    
+                                    
                                     <form action="index.php" method="post">
                                         <button name="<?php echo $aid ?>" style="<?php echo $style?>" class="text-white fw-bolder btn">
                                             Accept
